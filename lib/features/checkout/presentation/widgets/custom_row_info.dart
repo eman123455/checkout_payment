@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CartRowInfo extends StatelessWidget {
-  const CartRowInfo({super.key, required this.title, required this.price, this.style});
+class CustomRowInfo extends StatelessWidget {
+  const CustomRowInfo({super.key, required this.title, required this.price, this.style});
   final String title;
   final String price;
   final TextStyle? style;

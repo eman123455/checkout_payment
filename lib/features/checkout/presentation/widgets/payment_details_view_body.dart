@@ -1,7 +1,9 @@
 import 'package:checkout_payment/core/components/custom_button.dart';
+import 'package:checkout_payment/core/resources/app_routes.dart';
 import 'package:checkout_payment/features/checkout/presentation/widgets/custom_credit_card.dart';
 import 'package:checkout_payment/features/checkout/presentation/widgets/payment_methods_List_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PaymentDetailsViewBody extends StatefulWidget {
   const PaymentDetailsViewBody({super.key});
@@ -35,6 +37,7 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                   } else {
+                    context.go(AppRoutes.kThanksYouView);
                     setState(() {
                       autovalidateMode = AutovalidateMode.always;
                     });
