@@ -16,7 +16,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       title: Text(title, style: AppTextStyles.style25),
       centerTitle: true,
-      leading: Center(child: SvgPicture.asset(Images.arrowImagePath)),
+      leading: Center(child: IconButton(
+  icon: SvgPicture.asset(Images.arrowImagePath),
+  onPressed: () {
+  },
+),),
     );
   }
 }
