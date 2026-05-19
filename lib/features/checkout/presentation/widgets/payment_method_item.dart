@@ -7,7 +7,8 @@ class PaymentMethodItem extends StatelessWidget {
   const PaymentMethodItem({
     super.key,
     required this.imagePath,
-    required this.isActive, this.child,
+    required this.isActive,
+    this.child,
   });
   final String imagePath;
   final bool isActive;

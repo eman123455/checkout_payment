@@ -3,7 +3,6 @@ import 'package:checkout_payment/core/resources/app_colors.dart';
 import 'package:checkout_payment/features/checkout/presentation/widgets/my_cart_view_body.dart';
 import 'package:flutter/material.dart';
 
-
 class MyCartView extends StatelessWidget {
   const MyCartView({super.key});
 
@@ -11,9 +10,8 @@ class MyCartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kWhite,
-      appBar:CustomAppBar(title: 'Cart',) ,
+      appBar: CustomAppBar(title: 'Cart'),
       body: MyCartViewBody(),
-      );
+    );
   }
 }
-

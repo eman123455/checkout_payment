@@ -13,9 +13,9 @@ class ThanksYouView extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-           CustomAppBar(title: ''),
+            CustomAppBar(title: ''),
             Transform.translate(
-              offset: const Offset(0,16),
+              offset: const Offset(0, 16),
               child: const ThanksYouViewBody(),
             ),
           ],

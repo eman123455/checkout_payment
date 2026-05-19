@@ -2,7 +2,7 @@ import 'package:checkout_payment/core/resources/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class PaymentRowInfo extends StatelessWidget {
-  const PaymentRowInfo({super.key, required this.title, required this.info,});
+  const PaymentRowInfo({super.key, required this.title, required this.info});
   final String title;
   final String info;
   @override

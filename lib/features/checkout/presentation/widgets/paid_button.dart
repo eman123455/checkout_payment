@@ -8,25 +8,25 @@ class PaidButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30,vertical: 14),
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
       decoration: ShapeDecoration(
         color: Colors.transparent,
         shape: RoundedRectangleBorder(
-          side: BorderSide(
-            width: 1.5,
-            color:  AppColors.kGreen 
-          ),
+          side: BorderSide(width: 1.5, color: AppColors.kGreen),
           borderRadius: BorderRadius.circular(15),
         ),
       ),
       child: Container(
         decoration: BoxDecoration(
-        color: Colors.transparent,
+          color: Colors.transparent,
 
           borderRadius: BorderRadius.circular(15),
         ),
         child: Center(
-          child: Text('PAID',style: AppTextStyles.style24.copyWith(color: AppColors.kGreen),),
+          child: Text(
+            'PAID',
+            style: AppTextStyles.style24.copyWith(color: AppColors.kGreen),
+          ),
         ),
       ),
     );

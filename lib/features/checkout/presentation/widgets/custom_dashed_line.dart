@@ -8,18 +8,15 @@ class CustomDashedLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-            children: List.generate(
-              30, 
-              (index)=>Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 1),
-                  child: Container(
-                    color: AppColors.kGreyB8,
-                    height: 1.h,
-                  ),
-                ),
-                ),
-                ),
-          );
+      children: List.generate(
+        30,
+        (index) => Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 1),
+            child: Container(color: AppColors.kGreyB8, height: 1.h),
+          ),
+        ),
+      ),
+    );
   }
 }

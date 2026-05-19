@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
 class ThankYouCard extends StatelessWidget {
   const ThankYouCard({super.key});
 
@@ -16,47 +15,47 @@ class ThankYouCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-          decoration: ShapeDecoration(
-            color: AppColors.kGreyE9,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20)
-            )
+      decoration: ShapeDecoration(
+        color: AppColors.kGreyE9,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 50 + 16, left: 22, right: 22),
+        child: Column(
+          children: [
+            Text('Thank you!', style: AppTextStyles.style25),
+            Text(
+              'Your transaction was successful',
+              style: AppTextStyles.style20,
             ),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 50+16,left: 22,right: 22),
-              child: Column(
-                children: [
-                  Text('Thank you!',style: AppTextStyles.style25,),
-                  Text('Your transaction was successful',style: AppTextStyles.style20,),
-                  SizedBox(height: 42.h,),
-                  PaymentRowInfo(title: 'Date', info:'01/24/2023'),
-                  SizedBox(height: 20.h,),
-                  PaymentRowInfo(title: 'Time', info:'10:15 AM'),
-                  SizedBox(height: 20.h,),
-                  PaymentRowInfo(title: 'To', info:'Sam Louis'),
-                  Divider(
-                    height: 60,
-                    thickness: 2,
-                  ),
-                  CustomRowInfo(
+            SizedBox(height: 42.h),
+            PaymentRowInfo(title: 'Date', info: '01/24/2023'),
+            SizedBox(height: 20.h),
+            PaymentRowInfo(title: 'Time', info: '10:15 AM'),
+            SizedBox(height: 20.h),
+            PaymentRowInfo(title: 'To', info: 'Sam Louis'),
+            Divider(height: 60, thickness: 2),
+            CustomRowInfo(
               title: 'Total',
               price: '\$50',
               style: AppTextStyles.style24,
             ),
-            SizedBox(height: 30.h,),
+            SizedBox(height: 30.h),
             CardInfoWidget(),
             Spacer(),
             Row(
               mainAxisAlignment: .spaceBetween,
               children: [
-                FaIcon(FontAwesomeIcons.barcode,size: 64,),
-                PaidButton()
+                FaIcon(FontAwesomeIcons.barcode, size: 64),
+                PaidButton(),
               ],
             ),
-            SizedBox(height:( (MediaQuery.sizeOf(context).height*0.2+20)/2)-28,)
-                ],
-              ),
+            SizedBox(
+              height: ((MediaQuery.sizeOf(context).height * 0.2 + 20) / 2) - 28,
             ),
-        );
+          ],
+        ),
+      ),
+    );
   }
 }

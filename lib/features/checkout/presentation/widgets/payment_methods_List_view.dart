@@ -23,8 +23,7 @@ class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
           return GestureDetector(
             onTap: () {
               setState(() {
-              activeIndex = index;
-                 
+                activeIndex = index;
               });
             },
             child: Padding(
