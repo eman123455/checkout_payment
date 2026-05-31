@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 import 'amount_details.dart';
 import 'automatic_payment_methods.dart';
 import 'metadata.dart';

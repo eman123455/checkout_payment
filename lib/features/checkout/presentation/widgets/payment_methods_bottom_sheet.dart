@@ -37,7 +37,11 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
                 text: 'Continue',
                 onPressed: () {
                   PaymentIntentInputModel paymentIntentInputModel =
-                      PaymentIntentInputModel(amount: '5000', currency: 'USD', customerId: 'cus_UcCLU21nVFh3a8');
+                      PaymentIntentInputModel(
+                        amount: '5000',
+                        currency: 'USD',
+                        customerId: 'cus_UcCLU21nVFh3a8',
+                      );
                   BlocProvider.of<PaymentCubit>(context).processPayment(
                     paymentIntentInputModel: paymentIntentInputModel,
                   );
