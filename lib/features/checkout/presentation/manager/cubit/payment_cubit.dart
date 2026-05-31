@@ -10,9 +10,16 @@ part 'payment_state.dart';
 class PaymentCubit extends Cubit<PaymentState> {
   PaymentCubit() : super(PaymentInitial());
   final StripeRepo stripeRepo = getIt<StripeRepoImplementation>();
-  Future<void>  processPayment({required PaymentIntentInputModel paymentIntentInputModel}) async {
+  Future<void> processPayment({
+    required PaymentIntentInputModel paymentIntentInputModel,
+  }) async {
     emit(PaymentProcessing());
-    final result=await stripeRepo.processPayment(paymentIntentInputModel: paymentIntentInputModel);
-    result.fold((error) => emit(PaymentFailure(errMag: error.toString())), (success) => emit(PaymentSuccess()));
+    final result = await stripeRepo.processPayment(
+      paymentIntentInputModel: paymentIntentInputModel,
+    );
+    result.fold(
+      (error) => emit(PaymentFailure(errMag: error.errMsg)),
+      (success) => emit(PaymentSuccess()),
+    );
   }
 }

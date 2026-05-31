@@ -16,5 +16,5 @@ final class PaymentSuccess extends PaymentState {}
 final class PaymentFailure extends PaymentState {
   final String errMag;
 
-const PaymentFailure({required this.errMag});
+  const PaymentFailure({required this.errMag});
 }

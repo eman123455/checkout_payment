@@ -3,5 +3,7 @@ import 'package:checkout_payment/features/checkout/data/models/payment_intent_mo
 import 'package:dartz/dartz.dart';
 
 abstract class StripeRepo {
-  Future<Either<Failure, void>> processPayment({required PaymentIntentInputModel paymentIntentInputModel});
+  Future<Either<Failure, void>> processPayment({
+    required PaymentIntentInputModel paymentIntentInputModel,
+  });
 }

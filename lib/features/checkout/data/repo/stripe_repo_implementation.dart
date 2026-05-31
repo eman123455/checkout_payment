@@ -7,17 +7,22 @@ import 'package:dartz/dartz.dart';
 
 class StripeRepoImplementation implements StripeRepo {
   final StripeService stripeService;
-  StripeRepoImplementation(this.stripeService); 
+  StripeRepoImplementation(this.stripeService);
 
   @override
-  Future<Either<Failure, void>> processPayment({required PaymentIntentInputModel paymentIntentInputModel}) async {
-  try {
-     PaymentIntentModel paymentIntent =  await stripeService.createPaymentIntent(paymentIntentInputModel);
-    await stripeService.initPaymentSheet(paymentIntentClientSecret: paymentIntent.clientSecret);
-    await stripeService.presentPaymentSheet();
-    return const Right(null);
-  } catch (e) {
-    return Left(ServerFailure(errMsg: e.toString()));
-  }
+  Future<Either<Failure, void>> processPayment({
+    required PaymentIntentInputModel paymentIntentInputModel,
+  }) async {
+    try {
+      PaymentIntentModel paymentIntent = await stripeService
+          .createPaymentIntent(paymentIntentInputModel);
+      await stripeService.initPaymentSheet(
+        paymentIntentClientSecret: paymentIntent.clientSecret,
+      );
+      await stripeService.presentPaymentSheet();
+      return const Right(null);
+    } catch (e) {
+      return Left(ServerFailure(errMsg: e.toString()));
+    }
   }
 }
