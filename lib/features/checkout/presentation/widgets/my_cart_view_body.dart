@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyCartViewBody extends StatelessWidget {
   const MyCartViewBody({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(

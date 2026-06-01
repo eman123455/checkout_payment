@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PaymentMethodsListView extends StatefulWidget {
-  const PaymentMethodsListView({super.key});
-
+  const PaymentMethodsListView({super.key,required this.updatePaymentMethodsBottomSheet});
+  final Function({required int index}) updatePaymentMethodsBottomSheet;
   @override
   State<PaymentMethodsListView> createState() => _PaymentMethodsListViewState();
 }
@@ -25,6 +25,7 @@ class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
               setState(() {
                 activeIndex = index;
               });
+              widget.updatePaymentMethodsBottomSheet(index: index);
             },
             child: Padding(
               padding: const EdgeInsets.only(left: 10),

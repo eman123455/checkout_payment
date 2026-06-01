@@ -21,14 +21,16 @@ class StripeService {
       endpoint: '/payment_intents',
       data: paymentIntentInputModel.toJson(),
       headers: {
-        'Authorization': 'Bearer ${Constants.secreteKey}',
+        'Authorization': 'Bearer ${Constants.stripeSecretKey}',
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     );
     return PaymentIntentModel.fromJson(response.data);
   }
 
-  Future<void> initPaymentSheet({required InitPaymentSheetInputModel inputModel}) async {
+  Future<void> initPaymentSheet({
+    required InitPaymentSheetInputModel inputModel,
+  }) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret: inputModel.paymentIntentClientSecret,
@@ -46,7 +48,8 @@ class StripeService {
       rethrow;
     }
   }
-// save payment method for future use
+
+  // save payment method for future use
   Future<CustomerModel> createCustomer(
     CustomerInputModel customerInputModel,
   ) async {
@@ -54,12 +57,13 @@ class StripeService {
       endpoint: '/customers',
       data: customerInputModel.toJson(),
       headers: {
-        'Authorization': 'Bearer ${Constants.secreteKey}',
+        'Authorization': 'Bearer ${Constants.stripeSecretKey}',
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     );
     return CustomerModel.fromJson(response.data);
   }
+
   Future<CustomerSessionModel> createCustomerSession(
     CustomerSessionInputModel customerSessionInputModel,
   ) async {
@@ -67,7 +71,7 @@ class StripeService {
       endpoint: '/customer_sessions',
       data: customerSessionInputModel.toJson(),
       headers: {
-        'Authorization': 'Bearer ${Constants.secreteKey}',
+        'Authorization': 'Bearer ${Constants.stripeSecretKey}',
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     );

@@ -7,6 +7,7 @@ import 'package:checkout_payment/features/checkout/data/models/payment_intent_mo
 import 'package:checkout_payment/features/checkout/data/repo/stripe_repo.dart';
 import 'package:checkout_payment/features/checkout/data/strip_service/stripe_service.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 class StripeRepoImplementation implements StripeRepo {
   final StripeService stripeService;
@@ -14,32 +15,33 @@ class StripeRepoImplementation implements StripeRepo {
 
   @override
   Future<Either<Failure, void>> processPayment({
-    required PaymentIntentInputModel paymentIntentInputModel, // amount  , currency , customerId
+    required PaymentIntentInputModel
+    paymentIntentInputModel, // amount  , currency , customerId
   }) async {
     try {
-    //   create payment intent
+      //   create payment intent
       PaymentIntentModel paymentIntent = await stripeService
           .createPaymentIntent(paymentIntentInputModel);
-    //  create customer session 
-      CustomerSessionModel customerSession =
-          await stripeService.createCustomerSession(
-        CustomerSessionInputModel(
-          customerId: paymentIntentInputModel.customerId, 
-          
-        ),
-      );
+      //  create customer session
+      CustomerSessionModel customerSession = await stripeService
+          .createCustomerSession(
+            CustomerSessionInputModel(
+              customerId: paymentIntentInputModel.customerId,
+            ),
+          );
       InitPaymentSheetInputModel inputModel = InitPaymentSheetInputModel(
         paymentIntentClientSecret: paymentIntent.clientSecret,
         customerId: paymentIntentInputModel.customerId,
-        customerSessionClientSecret:
-            customerSession.clientSecret,
+        customerSessionClientSecret: customerSession.clientSecret,
       );
-      await stripeService.initPaymentSheet(
-        inputModel: inputModel,
-      );
+      await stripeService.initPaymentSheet(inputModel: inputModel);
       await stripeService.presentPaymentSheet();
       return const Right(null);
-    } catch (e) {
+    } on StripeException catch (e) {
+      return Left(ServerFailure(errMsg: e.error.message ?? 'oops, something went wrong'));
+    }
+    
+    catch (e) {
       return Left(ServerFailure(errMsg: e.toString()));
     }
   }

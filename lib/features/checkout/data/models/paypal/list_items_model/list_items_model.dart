@@ -3,14 +3,14 @@ import 'package:equatable/equatable.dart';
 import 'item.dart';
 
 class ListItemsModel extends Equatable {
-  final List<Item>? items;
+  final List<OrderItemModel>? items;
 
   const ListItemsModel({this.items});
 
   factory ListItemsModel.fromJson(Map<String, dynamic> json) {
     return ListItemsModel(
       items: (json['items'] as List<dynamic>?)
-          ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => OrderItemModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }

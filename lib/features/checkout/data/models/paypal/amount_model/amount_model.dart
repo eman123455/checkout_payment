@@ -3,24 +3,24 @@ import 'package:equatable/equatable.dart';
 import 'details.dart';
 
 class AmountModel extends Equatable {
-  final String? total;
-  final String? currency;
-  final Details? details;
+  final String total;
+  final String currency;
+  final Details details;
 
-  const AmountModel({this.total, this.currency, this.details});
+  const AmountModel({required this.total, required this.currency, required this.details});
 
   factory AmountModel.fromJson(Map<String, dynamic> json) => AmountModel(
-    total: json['total'] as String?,
-    currency: json['currency'] as String?,
+    total: json['total'] as String,
+    currency: json['currency'] as String,
     details: json['details'] == null
-        ? null
+        ? Details(subtotal: '0', shipping: '0', shippingDiscount: 0)
         : Details.fromJson(json['details'] as Map<String, dynamic>),
   );
 
   Map<String, dynamic> toJson() => {
     'total': total,
     'currency': currency,
-    'details': details?.toJson(),
+    'details': details.toJson(),
   };
 
   @override
